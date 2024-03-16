@@ -3,33 +3,31 @@
 ```mermaid
 classDiagram
     class MenuItem {
-        - name: string
-        - price: float
-        + calculate_total_price(quantity: int): float
+        -String name
+        -float price
+        +calculate_total_price(quantity)
     }
-
     class Beverage {
-        - size: string
-        + __init__(name: string, price: float, size: string)
+        -String size
+        +__init__(name, price, size)
     }
-
     class Appetizer {
-        - servings: int
-        + __init__(name: string, price: float, servings: int)
+        -int servings
+        +__init__(name, price, servings)
     }
-
     class MainCourse {
-        - ingredients: List<string>
-        + __init__(name: string, price: float, ingredients: List<string>)
+        -List<String> ingredients
+        +__init__(name, price, ingredients)
     }
-
     class Order {
-        - items: List<Tuple>
-        + add_item(item: MenuItem, quantity: int)
-        + calculate_total_bill(): float
+        -List<tuple<MenuItem, int>> items
+        +__init__()
+        +add_item(item, quantity=1)
+        +calculate_total_bill()
     }
-
     MenuItem <|-- Beverage
     MenuItem <|-- Appetizer
     MenuItem <|-- MainCourse
+    Order "1" *-- "*" MenuItem : contains
+
 ```
