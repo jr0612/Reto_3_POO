@@ -32,6 +32,12 @@ class Order:
         total_bill = 0
         for item, quantity in self.items:
             total_bill += item.calculate_total_price(quantity)
+        
+
+        if total_bill >= 50:
+            discount = total_bill * 0.1  
+            total_bill -= discount
+        
         return total_bill
 
 
@@ -43,7 +49,7 @@ if __name__ == "__main__":
 
    
     order = Order()
-    order.add_item(cola, 2)
+    order.add_item(cola, 16)
     order.add_item(wings)
     order.add_item(steak)
 
